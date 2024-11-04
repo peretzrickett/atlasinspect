@@ -1,4 +1,4 @@
-# AtlasInspect
+# Atlas Inspect
 
 This repository contains resources and scripts for exploring and inspecting database schemas using [Atlas](https://atlasgo.io/) with PostgreSQL. The project demonstrates the use of `atlas schema inspect` to view schema structures in various formats, including HCL, SQL, JSON, and an interactive visual browser.
 
