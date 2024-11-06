@@ -42,7 +42,7 @@ This project includes scripts to inspect the schema in different formats using A
 - **HCL Format**:
 
   ```bash
-  atlas schema inspect --url "postgres://atlasuser:atlaspass@localhost:5432/atlasdb?sslmode=disable" > schema.hcl
+  atlas schema inspect --url "postgres://atlasuser:atlaspass@localhost:5432/atlasdb?sslmode=disable" > schema.my.hcl
   ```
 
 - **SQL Format**:
@@ -54,7 +54,7 @@ This project includes scripts to inspect the schema in different formats using A
 - **JSON Format**:
 
   ```bash
-  atlas schema inspect --url "postgres://atlasuser:atlaspass@localhost:5432/atlasdb?sslmode=disable" --format json > schema.json
+  atlas schema inspect --url "postgres://atlasuser:atlaspass@localhost:5432/atlasdb?sslmode=disable" --format '{{ json . }}' | jq > schema.json
   ```
 
 - **Visual Browser View**:
