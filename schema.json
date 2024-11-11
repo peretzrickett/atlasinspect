@@ -1,0 +1,204 @@
+{
+  "schemas": [
+    {
+      "name": "company",
+      "tables": [
+        {
+          "name": "departments",
+          "columns": [
+            {
+              "name": "department_id",
+              "type": "serial"
+            },
+            {
+              "name": "name",
+              "type": "character varying"
+            },
+            {
+              "name": "location",
+              "type": "character varying",
+              "null": true
+            }
+          ],
+          "primary_key": {
+            "parts": [
+              {
+                "column": "department_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "employee_projects",
+          "columns": [
+            {
+              "name": "employee_id",
+              "type": "integer"
+            },
+            {
+              "name": "project_id",
+              "type": "integer"
+            },
+            {
+              "name": "role",
+              "type": "character varying",
+              "null": true
+            }
+          ],
+          "primary_key": {
+            "parts": [
+              {
+                "column": "employee_id"
+              },
+              {
+                "column": "project_id"
+              }
+            ]
+          },
+          "foreign_keys": [
+            {
+              "name": "employee_projects_employee_id_fkey",
+              "columns": [
+                "employee_id"
+              ],
+              "references": {
+                "table": "employees",
+                "columns": [
+                  "employee_id"
+                ]
+              }
+            },
+            {
+              "name": "employee_projects_project_id_fkey",
+              "columns": [
+                "project_id"
+              ],
+              "references": {
+                "table": "projects",
+                "columns": [
+                  "project_id"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "employees",
+          "columns": [
+            {
+              "name": "employee_id",
+              "type": "serial"
+            },
+            {
+              "name": "first_name",
+              "type": "character varying"
+            },
+            {
+              "name": "last_name",
+              "type": "character varying"
+            },
+            {
+              "name": "email",
+              "type": "character varying"
+            },
+            {
+              "name": "phone_number",
+              "type": "character varying",
+              "null": true
+            },
+            {
+              "name": "hire_date",
+              "type": "date"
+            },
+            {
+              "name": "department_id",
+              "type": "integer",
+              "null": true
+            },
+            {
+              "name": "salary",
+              "type": "numeric",
+              "null": true
+            },
+            {
+              "name": "job_title",
+              "type": "character varying",
+              "null": true
+            }
+          ],
+          "indexes": [
+            {
+              "name": "employees_email_key",
+              "unique": true,
+              "parts": [
+                {
+                  "column": "email"
+                }
+              ]
+            }
+          ],
+          "primary_key": {
+            "parts": [
+              {
+                "column": "employee_id"
+              }
+            ]
+          },
+          "foreign_keys": [
+            {
+              "name": "employees_department_id_fkey",
+              "columns": [
+                "department_id"
+              ],
+              "references": {
+                "table": "departments",
+                "columns": [
+                  "department_id"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "projects",
+          "columns": [
+            {
+              "name": "project_id",
+              "type": "serial"
+            },
+            {
+              "name": "name",
+              "type": "character varying"
+            },
+            {
+              "name": "start_date",
+              "type": "date",
+              "null": true
+            },
+            {
+              "name": "end_date",
+              "type": "date",
+              "null": true
+            },
+            {
+              "name": "budget",
+              "type": "numeric",
+              "null": true
+            }
+          ],
+          "primary_key": {
+            "parts": [
+              {
+                "column": "project_id"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "public",
+      "comment": "standard public schema"
+    }
+  ]
+}
